@@ -15,7 +15,7 @@
             class="bg-center bg-no-repeat bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/conference.jpg')] bg-gray-700 bg-blend-multiply">
             <div class="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-56">
                 <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">
-                    KAIA</h1>
+                    Student Package</h1>
 
             </div>
         </section>
@@ -71,65 +71,15 @@
         <div class="mt-5">
             <div class="flex justify-between px-5">
                 <h1 class="font-bold">Rekomendasi Ide Pose Foto</h1>
-                <a href="/pemesanan">lihat Semua</a>
+                <a href="">lihat Semua</a>
 
             </div>
             <div class="flex gap-3 overflow-scroll px-5">
 
-                <img class="w-96 h-32 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/jumbotron/conference.jpg"
-                    alt="">
-                <img class="w-96 h-32 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/jumbotron/conference.jpg"
-                    alt="">
-                <img class="w-96 h-32 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/jumbotron/conference.jpg"
-                    alt="">
-                <img class="w-96 h-32 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/jumbotron/conference.jpg"
-                    alt="">
-                <img class="w-96 h-32 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/jumbotron/conference.jpg"
-                    alt="">
+                <img class="object-cover w-96 h-32 rounded-lg"
+                    src="https://flowbite.s3.amazonaws.com/docs/jumbotron/conference.jpg" alt="">
             </div>
         </div>
-        <div class="mt-5">
-            <div class="flex justify-between px-5">
-                <h1 class="font-bold">Rekomendasi Ide Pose Foto</h1>
-                <a href="/pemesanan">lihat Semua</a>
-
-            </div>
-            <div class="flex gap-3 overflow-scroll px-5">
-
-                <img class="w-96 h-32 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/jumbotron/conference.jpg"
-                    alt="">
-                <img class="w-96 h-32 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/jumbotron/conference.jpg"
-                    alt="">
-                <img class="w-96 h-32 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/jumbotron/conference.jpg"
-                    alt="">
-                <img class="w-96 h-32 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/jumbotron/conference.jpg"
-                    alt="">
-                <img class="w-96 h-32 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/jumbotron/conference.jpg"
-                    alt="">
-            </div>
-        </div>
-        <div class="mt-5">
-            <div class="flex justify-between px-5">
-                <h1 class="font-bold">Rekomendasi Ide Pose Foto</h1>
-                <a href="/pemesanan">lihat Semua</a>
-
-            </div>
-
-            <div class="flex gap-3 overflow-scroll px-5">
-
-                <img class="w-96 h-32 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/jumbotron/conference.jpg"
-                    alt="">
-                <img class="w-96 h-32 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/jumbotron/conference.jpg"
-                    alt="">
-                <img class="w-96 h-32 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/jumbotron/conference.jpg"
-                    alt="">
-                <img class="w-96 h-32 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/jumbotron/conference.jpg"
-                    alt="">
-                <img class="w-96 h-32 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/jumbotron/conference.jpg"
-                    alt="">
-            </div>
-        </div>
-
 
     </div>
 </body>

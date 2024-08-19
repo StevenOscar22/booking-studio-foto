@@ -13,10 +13,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/welcome', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
+Route::get('/', function () {
     return view('dashboard');
+});
+
+Route::get('/paket', function () {
+    return view('select-package');
+});
+
+Route::get('/pemesanan', function () {
+    return view('booking');
 });
