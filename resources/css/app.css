@@ -1,3 +1,178 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(0 0 0);
+    color: rgb(255 255 255);
+    scroll-behavior: smooth;
+}
+
+.text-brown-basic {
+    color: #925e00;
+}
+
+.bg-brown-basic {
+    background-color: #925e00;
+}
+
+.gray-basic {
+    color: #b5b5b5;
+}
+
+.bg-gray-basic {
+    background-color: #b5b5b5;
+}
+
+.border-brown-basic {
+    border-color: #925e00;
+}
+
+.text-orange-basic {
+    color: #FFA500;
+}
+
+.bg-orange-basic {
+    background-color: #FFA500;
+}
+
+@media screen and (max-width: 580px) {
+    .sample-foto {
+        margin-left: -50px;
+        margin-top: -30px;
+    }
+}
+
+@media screen and (min-width: 580.5px) {
+    .sample-foto {
+        margin-left: -110px;
+        margin-top: -30px;
+    }
+}
+
+.radio-group {
+    display: flex;
+    gap: 10px;
+}
+
+.radio-box {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.radio-box .content {
+    text-align: center;
+    pointer-events: none;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.radio-box .content .date,
+.radio-box .content .month {
+    font-size: 0.75rem;
+    color: #eaeaea;
+}
+
+.radio-box .content .day {
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: #fff;
+}
+
+.radio-box input[type="radio"] {
+    position: absolute;
+    /* opacity: 0; */
+    display: none;
+}
+
+.radio-box:hover {
+    border-color: #FFA500;
+}
+
+.radio-box input[type="radio"]:checked+.content {
+    background-color: #FFA500;
+    color: black;
+    border-radius: 10px;
+    border-color: #FFA500;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    transition: all 0.4s;
+    -webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    -ms-transition: all 0.4s;
+    -o-transition: all 0.4s;
+}
+
+.radio-box input[type="radio"]:checked+.content .day,
+.radio-box input[type="radio"]:checked+.content .time,
+.radio-box input[type="radio"]:checked+.content .person,
+.radio-box input[type="radio"]:checked+.content .upload_permission {
+    font-weight: 700;
+    color: black;
+}
+
+.radio-box input[type="radio"]:checked+.content .date,
+.radio-box input[type="radio"]:checked+.content .month {
+    color: black;
+}
+
+
+
+::-webkit-scrollbar {
+    width: 3.5px;
+    height: 3.5px;
+}
+
+::-webkit-scrollbar-button {
+    display: none;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #777;
+}
+
+::-webkit-scrollbar-track-piece {
+    background: #555;
+}
+
+/* Styling dasar untuk tombol */
+.btn {
+    position: relative;
+    width: 200px;
+    text-align: center;
+}
+
+/* Pseudo-element untuk garis bawah animasi */
+.btn::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: rgb(251 146 60);
+    transition: width 0.3s ease-in-out;
+}
+
+/* Ketika tombol dipilih, garis bawah muncul dengan animasi */
+.btn.active::after {
+    width: 100%;
+}
