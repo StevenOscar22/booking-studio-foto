@@ -110,8 +110,10 @@ body {
     display: none;
 }
 
-.radio-box:hover {
+.radio-box:hover .content {
     border-color: #FFA500;
+    color: #ffd993;
+    border: 2px solid #FFA500;
 }
 
 .radio-box input[type="radio"]:checked+.content {
