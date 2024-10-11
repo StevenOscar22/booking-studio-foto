@@ -1,26 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.main')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    @vite('resources/css/app.css')
-</head>
+@section('title')
+    Kaia - {{ $title }}
+@endsection
 
-<body>
-    <header>
-
+@section(section: 'body')
+    <header class="max-w-[100%] m-auto">
+        <x-banner imgSrc="{{ asset('assets/banner_images/home_banner.png') }}" imgAlt="Banner Image"
+            title="{{ $title }}">
+            <img src="{{ asset('assets/logo/kaia_logo_with_shadow.svg') }}" alt="">
+        </x-banner>
     </header>
 
 
     <main>
-
     </main>
 
-    <footer>
-
-    </footer>
-</body>
-
-</html>
+    <x-footer title="{{ $title }}" />
+@endsection

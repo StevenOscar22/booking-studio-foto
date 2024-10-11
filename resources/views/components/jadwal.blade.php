@@ -5,7 +5,7 @@
             <label class="radio-box">
                 <input type="radio" name="day_date" value="slot1">
                 <div class="content px-5 py-2">
-                    <div class="flex gap-1 justify-center items-center">
+                <div class="flex gap-1 justify-center items-center">
                         <p class="date">21</p>
                         <p class="month">Aug</p>
                     </div>
@@ -204,7 +204,8 @@
     </section>
 
     <!-- Submit Button -->
-    <div class="flex justify-center items-center bg-orange-basic hover:bg-orange-300 rounded-lg transition-all duration-200">
+    <div
+        class="flex justify-center items-center bg-orange-basic hover:bg-orange-300 rounded-lg transition-all duration-200">
         <button type="submit" class="font-bold text-black w-[90%] h-10">BOOKING</button>
     </div>
 </form>

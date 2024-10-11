@@ -14,6 +14,11 @@ body {
     scroll-behavior: smooth;
 }
 
+/* custom color */
+.bg-black-basic {
+    background-color: rgb(0 0 0);
+}
+
 .text-brown-basic {
     color: #925e00;
 }
@@ -42,20 +47,21 @@ body {
     background-color: #FFA500;
 }
 
-@media screen and (max-width: 580px) {
-    .sample-foto {
-        margin-left: -50px;
-        margin-top: -30px;
-    }
+.border-orange-basic {
+    border-color: #FFA500;
 }
 
-@media screen and (min-width: 580.5px) {
-    .sample-foto {
-        margin-left: -110px;
-        margin-top: -30px;
-    }
+.focus\:outline-orange-basic:focus {
+    outline-color: #FFA500;
 }
 
+/* sesi booking */
+.sample-foto {
+    margin-right: 100px;
+    margin-top: -30px;
+}
+
+/* sesi booking - bagian jadwal */
 .radio-group {
     display: flex;
     gap: 10px;
@@ -69,6 +75,10 @@ body {
     justify-content: center;
     cursor: pointer;
     transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
 }
 
 .radio-box .content {
@@ -76,6 +86,10 @@ body {
     pointer-events: none;
     border: 1px solid #ccc;
     border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
 }
 
 .radio-box .content .date,
@@ -130,7 +144,7 @@ body {
 }
 
 
-
+/* scrollbar - terutama bagian booking::jadwal */
 ::-webkit-scrollbar {
     width: 3.5px;
     height: 3.5px;
@@ -153,14 +167,14 @@ body {
     background: #555;
 }
 
-/* Styling dasar untuk tombol */
+/* garis bawah untuk tombol S & K dan Jadwal */
 .btn {
     position: relative;
     width: 200px;
     text-align: center;
 }
 
-/* Pseudo-element untuk garis bawah animasi */
+/* Pseudo-element untuk garis bawah animasi di tombol S & K dan Jadwal */
 .btn::after {
     content: '';
     position: absolute;
@@ -168,11 +182,51 @@ body {
     bottom: 0;
     width: 0;
     height: 2px;
-    background-color: rgb(251 146 60);
+    background-color: rgb(251, 146, 60);
     transition: width 0.3s ease-in-out;
 }
 
 /* Ketika tombol dipilih, garis bawah muncul dengan animasi */
 .btn.active::after {
     width: 100%;
+}
+
+
+/* inner shadow untuk banner */
+.home-shadow-inner-img {
+    position: relative;
+    display: inline-block;
+}
+
+.home-shadow-inner-img::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    top: 0;
+    left: 0;
+    width: 120%;
+    height: 100%;
+    box-shadow: inset -15px -50px 25px rgba(0, 0, 0, 0.4);
+    pointer-events: none;
+    z-index: 10;
+    border-radius: inherit;
+}
+
+.paket-shadow-inner-img {
+    position: relative;
+    display: inline-block;
+}
+
+.paket-shadow-inner-img::before {
+    content: '';
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    width: 120%;
+    height: 100%;
+    box-shadow: inset -15px -20px 25px rgba(0, 0, 0, 1);
+    pointer-events: none;
+    z-index: 10;
+    border-radius: inherit;
 }

@@ -1,10 +1,9 @@
 <?php
 
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\JenisPaketController;
-use App\Http\Controllers\SessionController;
-use App\Http\Controllers\PaketController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BookingController;
+use App\Http\Controllers\ContentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,33 +16,40 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('layouts.main');
-});
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-});
-
 // authentication
 Route::controller(AuthController::class)->group(function () {
     Route::get('/login', [AuthController::class, "login"])->name("login");
 
-    Route::get('/daftar', [AuthController::class, "daftar"])->name("daftar");
+    Route::get('/daftar', [AuthController::class, "register"])->name("daftar");
+});
+
+Route::get('/', function () {
+    return view('home', ['title' => 'Home']);
+});
+
+Route::get('/paket', function () {
+    return view('paket', ['title' => 'Paket']);
+});
+
+Route::get('/profile', function () {
+    return view('profile', ['title' => 'Profile']);
 });
 
 
 // booking paket
-Route::controller(JenisPaketController::class)->group(function () {
-    Route::get('/paket/{paket_booking}', [JenisPaketController::class, "index"])->name("booking");
+Route::controller(BookingController::class)->group(function () {
+    Route::get('/paket/{paket_booking}', [BookingController::class, "index"])->name("booking");
 
-    Route::get('/paket/{paket_booking}/{jenis_paket}', [JenisPaketController::class, "jenisPaket"])->name("paket");
+    Route::get('/paket/{paket_booking}/{jenis_paket}', [BookingController::class, "jenisPaket"])->name("paket");
+
+    // Booking Confirm
+    Route::get("/paket/{paket_booking}/{jenis_paket?}/confirm", [BookingController::class, "confirm"])->name("confirm");
 });
 
 
 // get S & K dan Jadwal dari setiap booking dan paketnya -> using AJAX
-Route::controller(SessionController::class)->group(function () {
-    Route::post('/get-content', [SessionController::class, 'getContent'])->name('get-content');
+Route::controller(ContentController::class)->group(function () {
+    Route::post('/get-content', [ContentController::class, 'getContent'])->name('get-content');
 });
 
 
