@@ -72,7 +72,7 @@
             <div class="flex justify-between px-5">
                 <h1 class="font-bold">Rekomendasi Ide Pose Foto</h1>
                 <a href="">lihat Semua</a>
-
+                <x-bi-arrow-bar-right />
             </div>
             <div class="flex gap-3 overflow-scroll px-5">
 
