@@ -40,19 +40,26 @@ body {
 }
 
 .text-orange-basic {
-    color: #FFA500;
+    color: #ffa500;
 }
 
 .bg-orange-basic {
-    background-color: #FFA500;
+    background-color: #ffa500;
 }
 
 .border-orange-basic {
-    border-color: #FFA500;
+    border-color: #ffa500;
 }
 
 .focus\:outline-orange-basic:focus {
-    outline-color: #FFA500;
+    outline-color: #ffa500;
+}
+
+.border-b-orange-basic {
+    --tw-border-opacity: 1;
+    border-bottom-color: rgb(255 165 0 / var(--tw-border-opacity))
+        /* #FFA500 */
+    ;
 }
 
 /* sesi booking */
@@ -111,16 +118,16 @@ body {
 }
 
 .radio-box:hover .content {
-    border-color: #FFA500;
+    border-color: #ffa500;
     color: #ffd993;
-    border: 2px solid #FFA500;
+    border: 2px solid #ffa500;
 }
 
 .radio-box input[type="radio"]:checked+.content {
-    background-color: #FFA500;
+    background-color: #ffa500;
     color: black;
     border-radius: 10px;
-    border-color: #FFA500;
+    border-color: #ffa500;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     -ms-border-radius: 10px;
@@ -144,7 +151,6 @@ body {
 .radio-box input[type="radio"]:checked+.content .month {
     color: black;
 }
-
 
 /* scrollbar - terutama bagian booking::jadwal */
 ::-webkit-scrollbar {
@@ -178,7 +184,7 @@ body {
 
 /* Pseudo-element untuk garis bawah animasi di tombol S & K dan Jadwal */
 .btn::after {
-    content: '';
+    content: "";
     position: absolute;
     left: 0;
     bottom: 0;
@@ -193,7 +199,6 @@ body {
     width: 100%;
 }
 
-
 /* inner shadow untuk banner */
 .home-shadow-inner-img {
     position: relative;
@@ -201,7 +206,7 @@ body {
 }
 
 .home-shadow-inner-img::before {
-    content: '';
+    content: "";
     position: absolute;
     inset: 0;
     top: 0;
@@ -220,7 +225,7 @@ body {
 }
 
 .paket-shadow-inner-img::before {
-    content: '';
+    content: "";
     position: absolute;
     overflow: hidden;
     top: 0;

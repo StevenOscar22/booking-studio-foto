@@ -16,15 +16,14 @@ use App\Http\Controllers\ContentController;
 |
 */
 
-Route::get('/dashboard', function () {
-    return view('dashboard', ['title' => 'Dashboard']);
-});
 
 // authentication
 Route::controller(AuthController::class)->group(function () {
-    Route::get('/login', [AuthController::class, "login"])->name("login");
+    Route::get('/login', [AuthController::class, "login_view"])->name("login");
+    Route::post('/login', [AuthController::class, "login_action"])->name("login");
 
-    Route::get('/daftar', [AuthController::class, "register"])->name("daftar");
+    Route::get('/register', [AuthController::class, "register_view"])->name("register");
+    Route::post('/register', [AuthController::class, "register_action"])->name("register");
 });
 
 Route::get('/', function () {
