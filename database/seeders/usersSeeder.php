@@ -21,8 +21,8 @@ class usersSeeder extends Seeder
                 'name' => 'Admin',
                 'email' => 'admin@example.com',
                 'password' => Hash::make('admin123'), // Password yang di-hash
-                'phone' => '081234567890',
-                'picture' => 'path/to/admin/picture.jpg', // Ganti dengan path yang sesuai
+                'phone_number' => '081234567890',
+                'profile_picture' => 'path/to/admin/picture.jpg', // Ganti dengan path yang sesuai
                 'role' => 'admin',
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -31,9 +31,9 @@ class usersSeeder extends Seeder
                 'name' => 'Client',
                 'email' => 'client@example.com',
                 'password' => Hash::make('client123'), // Password yang di-hash
-                'phone' => '081234567891',
-                'picture' => 'path/to/client/picture.jpg', // Ganti dengan path yang sesuai
-                'role' => 'client',
+                'phone_number' => '081234567891',
+                'profile_picture' => 'path/to/client/picture.jpg', // Ganti dengan path yang sesuai
+                'role' => 'user',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
