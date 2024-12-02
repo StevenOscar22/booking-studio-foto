@@ -16,6 +16,10 @@ use App\Http\Controllers\ContentController;
 |
 */
 
+Route::get('/dashboard', function () {
+    return view('dashboard', ['title' => 'Dashboard']);
+});
+
 // authentication
 Route::controller(AuthController::class)->group(function () {
     Route::get('/login', [AuthController::class, "login"])->name("login");
