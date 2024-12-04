@@ -37,23 +37,134 @@
             </div>
 
             <div id="content-area" class="max-w-[400px] m-auto pt-3">
-                <!-- Default Content = snk.blade.php -->
-                <div>
-                    <ul>
-                        <li>1. For 1-6 Person</li>
-                        <li>2. Cetak 10R (20x25cm) + Frame</li>
-                        <li>3. Durasi Foto 30 menit (Estimasi 70+ foto)</li>
-                        <li>4. Free All Soft files Edit</li>
-                        <li>5. Max. 1 Kostum</li>
-                        <li>6. Add Person - 20.000/ person</li>
-                    </ul>
-                    <div
-                        class="flex justify-center items-center bg-orange-basic hover:bg-orange-300 rounded-lg transition-all duration-200 mb-10 mt-5">
-                        <button type="button" id="bookingBtnToJadwal" class="font-bold text-black w-[90%] h-10"
-                            onclick="changeStyle('jadwal')">BOOKING</button>
-                    </div>
+                {{-- @auth --}}
+                <div class="flex justify-center items-center bg-orange-basic hover:bg-orange-300 rounded-lg transition-all duration-200 mb-10 mt-5"
+                    id="loginButton">
+                    <button type="button" id="bookingBtnToJadwal" class="font-bold text-black w-[90%] h-10"
+                        onclick="changeStyle('jadwal')">BOOKING</button>
                 </div>
+                {{-- @else --}}
+                <div class="flex justify-center items-center bg-gray-400 rounded-lg mt-5">
+                    <a href="{{ route('login') }}"
+                        class="font-bold text-black w-[90%] h-10 flex justify-center items-center">
+                        LOGIN UNTUK MELANJUTKAN
+                    </a>
+                </div>
+                {{-- @endauth --}}
+            </div>
             </div>
         </section>
     </main>
+@endsection
+
+
+@section('script')
+    <script>
+        function changeStyle(option) {
+
+            // Terapkan style berdasarkan pilihan
+            const snkBtn = document.getElementById('snk-btn');
+            const jadwalBtn = document.getElementById('jadwal-btn');
+
+            if (option === 'snk') {
+                // Hapus kelas aktif dari jadwal-btn dan tambahkan ke snk-btn
+                jadwalBtn.classList.remove('active');
+                snkBtn.classList.add('active');
+            } else if (option === 'jadwal') {
+                // Hapus kelas aktif dari snk-btn dan tambahkan ke jadwal-btn
+                snkBtn.classList.remove('active');
+                jadwalBtn.classList.add('active');
+            }
+        }
+
+        function changeSnk() {
+            changeStyle('snk');
+            const key = 'snk'; // Cache key berdasarkan opsi
+
+            if (cachedResponses[key]) {
+                $('#content-area').html(cachedResponses[key]);
+            } else {
+                $.ajax({
+                    url: '{{ route('get_content') }}',
+                    type: 'POST',
+                    data: {
+                        paket_booking: "wisuda_family",
+                        jenis_paket: "bronze",
+                        option: "snk",
+                        _token: '{{ csrf_token() }}'
+                    },
+                    success: function(response) {
+                        cachedResponses[key] = response.content;
+                        $('#content-area').html(response.content);
+                    }
+                });
+            }
+        }
+
+        function changeJadwal() {
+            changeStyle('jadwal');
+            const key = 'jadwal'; // Cache key berdasarkan opsi
+
+
+            if (cachedResponses[key]) {
+                $('#content-area').html(cachedResponses[key]);
+            } else {
+                $.ajax({
+                    url: '{{ route('get_content') }}',
+                    type: 'POST',
+                    data: {
+                        paket_booking: "wisuda_family",
+                        jenis_paket: "bronze",
+                        option: "jadwal",
+                        _token: '{{ csrf_token() }}'
+                    },
+                    success: function(response) {
+                        // cachedResponses[key] = response.content;
+                        $('#content-area').html(response.content);
+
+                        document.getElementById('content-area').scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            }
+        }
+        // document.getElementById('snk-btn') && document.getElementById('jadwal-btn') && changeStyle('snk');
+
+        let cachedResponses = {};
+        // get content
+        $(document).ready(function() {
+            changeSnk();
+            $(document).on('click', '#snk-btn', function() {
+                changeSnk();
+            });
+
+            $(document).on('click', '#jadwal-btn', function() {
+                changeJadwal();
+            });
+
+            $(document).on('click', '#bookingBtnToJadwal', function() {
+                changeJadwal();
+            });
+
+            $(document).ready(function() {
+                // Fungsi untuk memeriksa apakah input sudah terisi
+                function checkInputs() {
+                    if ($('#day_date').val().trim() !== '' && $('#time').val().trim() !== '' && $(
+                            '#number_of_person').val().trim() !== '' && $('#upload_permission').val()
+                        .trim() !== '') {
+                        $('#loginButton button').prop('disabled', false); // Aktifkan tombol
+                    } else {
+                        $('#loginButton button').prop('disabled', true); // Nonaktifkan tombol
+                    }
+                }
+
+                // Tambahkan event listener ke input
+                $('#day_date, #time', '#number_of_person', '#upload_permission').on('input', checkInputs);
+
+                // Panggil sekali untuk inisialisasi
+                checkInputs();
+            });
+        });
+    </script>
 @endsection

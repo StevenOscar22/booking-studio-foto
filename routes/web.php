@@ -20,10 +20,10 @@ use App\Http\Controllers\ContentController;
 // authentication
 Route::controller(AuthController::class)->group(function () {
     Route::get('/login', [AuthController::class, "login_view"])->name("login");
-    Route::post('/login', [AuthController::class, "login_action"])->name("login");
+    Route::post('/login', [AuthController::class, "login_action"])->name("login.process");
 
     Route::get('/register', [AuthController::class, "register_view"])->name("register");
-    Route::post('/register', [AuthController::class, "register_action"])->name("register");
+    Route::post('/register', [AuthController::class, "register_action"])->name("register.process");
 });
 
 Route::get('/', function () {
@@ -41,23 +41,25 @@ Route::get('/profile', function () {
 
 // booking paket
 Route::controller(BookingController::class)->group(function () {
-    Route::get('/paket/{paket_booking}', [BookingController::class, "index"])->name("booking");
+    Route::get('/paket/{nama_paket}', [BookingController::class, "index"])->name("booking");
 
-    Route::get('/paket/{paket_booking}/{jenis_paket}', [BookingController::class, "jenisPaket"])->name("paket");
+    Route::get('/paket/{nama_paket}/{jenis_paket}', [BookingController::class, "jenisPaket"])->name("paket");
 
     // Booking Confirm
-    Route::get("/paket/{paket_booking}/{jenis_paket?}/confirm", [BookingController::class, "confirm"])->name("confirm");
+    Route::get("/paket/{nama_paket}/{jenis_paket?}/confirm", [BookingController::class, "confirmBookingPage"])->name("confirm_booking");
+
+    Route::post("/submit_booking", [BookingController::class, "submitBookingAction"]);
 });
 
 
 // get S & K dan Jadwal dari setiap booking dan paketnya -> using AJAX
 Route::controller(ContentController::class)->group(function () {
-    Route::post('/get-content', [ContentController::class, 'getContent'])->name('get-content');
+    Route::post('/get_content', [ContentController::class, 'getContent'])->name('get_content');
 });
 
 
 // Route::controller(SessionController::class)->group(function () {
-//     Route::post('/get-content/{paket_booking}/{jenis_paket}/{get_content}', [SessionController::class, 'getContent'])->name('get-content');
+//     Route::post('/get-content/{nama_paket}/{jenis_paket}/{get_content}', [SessionController::class, 'getContent'])->name('get-content');
 // });
 
 

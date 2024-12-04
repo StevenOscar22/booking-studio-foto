@@ -24,7 +24,11 @@ class BookingController extends Controller
         }
     }
 
-    public function confirm(string $paket_booking, ?string $jenis_paket = null) {
+    public function confirmBookingPage(string $paket_booking, ?string $jenis_paket = null) {
         return view('confirm_booking', ['title' => 'Confirm Booking']);
+    }
+
+    public function submitBookingAction(Request $data) {
+
     }
 }
