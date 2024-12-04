@@ -36,22 +36,8 @@
                 </div>
             </div>
 
-            <div id="content-area" class="max-w-[400px] m-auto pt-3">
-                {{-- @auth --}}
-                <div class="flex justify-center items-center bg-orange-basic hover:bg-orange-300 rounded-lg transition-all duration-200 mb-10 mt-5"
-                    id="loginButton">
-                    <button type="button" id="bookingBtnToJadwal" class="font-bold text-black w-[90%] h-10"
-                        onclick="changeStyle('jadwal')">BOOKING</button>
-                </div>
-                {{-- @else --}}
-                <div class="flex justify-center items-center bg-gray-400 rounded-lg mt-5">
-                    <a href="{{ route('login') }}"
-                        class="font-bold text-black w-[90%] h-10 flex justify-center items-center">
-                        LOGIN UNTUK MELANJUTKAN
-                    </a>
-                </div>
-                {{-- @endauth --}}
-            </div>
+            <div id="content-area" class="max-w-[400px] m-auto pt-3"></div>
+
             </div>
         </section>
     </main>
@@ -108,6 +94,8 @@
 
             if (cachedResponses[key]) {
                 $('#content-area').html(cachedResponses[key]);
+                // Panggil checkInputs() setelah konten dimuat
+                checkInputs();
             } else {
                 $.ajax({
                     url: '{{ route('get_content') }}',
@@ -122,6 +110,14 @@
                         // cachedResponses[key] = response.content;
                         $('#content-area').html(response.content);
 
+                        // Panggil checkInputs() setelah konten dimuat
+                        checkInputs();
+
+                        // Pastikan untuk menambahkan event listener untuk input radio setelah konten dimuat
+                        $('input[type="radio"]').on('change', function() {
+                            checkInputs();
+                        });
+
                         document.getElementById('content-area').scrollIntoView({
                             behavior: 'smooth'
                         });
@@ -129,6 +125,7 @@
                 });
             }
         }
+
         // document.getElementById('snk-btn') && document.getElementById('jadwal-btn') && changeStyle('snk');
 
         let cachedResponses = {};
@@ -146,25 +143,30 @@
             $(document).on('click', '#bookingBtnToJadwal', function() {
                 changeJadwal();
             });
+        });
 
-            $(document).ready(function() {
-                // Fungsi untuk memeriksa apakah input sudah terisi
-                function checkInputs() {
-                    if ($('#day_date').val().trim() !== '' && $('#time').val().trim() !== '' && $(
-                            '#number_of_person').val().trim() !== '' && $('#upload_permission').val()
-                        .trim() !== '') {
-                        $('#loginButton button').prop('disabled', false); // Aktifkan tombol
-                    } else {
-                        $('#loginButton button').prop('disabled', true); // Nonaktifkan tombol
-                    }
-                }
+        // Fungsi untuk memeriksa apakah semua radio button sudah dipilih
+        function checkInputs() {
+            const dayDateSelected = $('input[name="day_date"]:checked').length > 0;
+            const timeSelected = $('input[name="time"]:checked').length > 0;
+            const numberOfPersonSelected = $('input[name="number_of_person"]:checked').length > 0;
+            const uploadPermissionSelected = $('input[name="upload_permission"]:checked').length > 0;
 
-                // Tambahkan event listener ke input
-                $('#day_date, #time', '#number_of_person', '#upload_permission').on('input', checkInputs);
+            // Jika semua radio button dipilih, aktifkan tombol booking
+            if (dayDateSelected && timeSelected && numberOfPersonSelected && uploadPermissionSelected) {
+                console.log("Selected")
+                $('#submitBookingDisabled').hide(); // Sembunyikan tombol yang disabled
+                $('#submitBookingActive').show(); // Tampilkan tombol yang aktif
+            } else {
+                console.log("Not Selected");
+                $('#submitBookingDisabled').show(); // Tampilkan tombol yang disabled
+                $('#submitBookingActive').hide(); // Sembunyikan tombol yang aktif
+            }
+        }
 
-                // Panggil sekali untuk inisialisasi
-                checkInputs();
-            });
+        // Event listener untuk perubahan status radio button
+        $('input[type="radio"]').on('change', function() {
+            checkInputs();
         });
     </script>
 @endsection
